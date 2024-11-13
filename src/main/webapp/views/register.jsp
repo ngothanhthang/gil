@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Đăng Nhập</title>
+    <title>Đăng Ký</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             height: 100vh;
             margin: 0;
         }
-        .login-container {
+        .register-container {
             background: white;
             padding: 30px;
             border-radius: 10px;
@@ -32,7 +32,7 @@
             margin-bottom: 15px;
             text-align: left;
         }
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="password"], input[type="email"] {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -45,7 +45,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
@@ -53,35 +53,32 @@
             font-size: 16px;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
         .alert {
             color: red;
             font-size: 14px;
             margin-bottom: 10px;
         }
-        .links {
+        .login-link {
             margin-top: 15px;
             font-size: 14px;
-        }
-        .links a {
             color: #007bff;
             text-decoration: none;
-            margin: 0 5px;
         }
-        .links a:hover {
+        .login-link:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Đăng Nhập</h1>
+    <div class="register-container">
+        <h1>Đăng Ký</h1>
         <!-- Hiển thị thông báo lỗi -->
         <c:if test="${not empty alert}">
             <div class="alert">${alert}</div>
         </c:if>
-        <form action="${pageContext.request.contextPath}/login" method="post">
+        <form action="${pageContext.request.contextPath}/register" method="post">
             <div class="form-group">
                 <label for="uname">Tài khoản:</label>
                 <input type="text" id="uname" name="uname" placeholder="Nhập tài khoản">
@@ -91,19 +88,18 @@
                 <input type="password" id="psw" name="psw" placeholder="Nhập mật khẩu">
             </div>
             <div class="form-group">
-                <label>
-                    <input type="checkbox" name="remember"> Ghi nhớ đăng nhập
-                </label>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Nhập email">
+            </div>
+            <div class="form-group">
+                <label for="fname">Họ tên:</label>
+                <input type="text" id="fname" name="fname" placeholder="Nhập họ tên">
             </div>
             <div class="form-actions">
-                <button type="submit">Đăng Nhập</button>
+                <button type="submit">Đăng Ký</button>
             </div>
         </form>
-        <div class="links">
-            <a href="${pageContext.request.contextPath}/register">Chưa có tài khoản? Đăng ký ngay</a>
-            |
-            <a href="${pageContext.request.contextPath}/forgotpassword">Quên mật khẩu?</a>
-        </div>
+        <a href="${pageContext.request.contextPath}/login" class="login-link">Đã có tài khoản? Đăng nhập ngay</a>
     </div>
 </body>
 </html>

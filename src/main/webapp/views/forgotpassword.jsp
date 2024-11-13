@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Đăng Nhập</title>
+    <title>Quên Mật Khẩu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             height: 100vh;
             margin: 0;
         }
-        .login-container {
+        .forgot-container {
             background: white;
             padding: 30px;
             border-radius: 10px;
@@ -60,50 +60,43 @@
             font-size: 14px;
             margin-bottom: 10px;
         }
-        .links {
+        a {
             margin-top: 15px;
+            display: inline-block;
             font-size: 14px;
-        }
-        .links a {
             color: #007bff;
             text-decoration: none;
-            margin: 0 5px;
         }
-        .links a:hover {
+        a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Đăng Nhập</h1>
-        <!-- Hiển thị thông báo lỗi -->
+    <div class="forgot-container">
+        <h1>Quên Mật Khẩu</h1>
+        <!-- Hiển thị thông báo lỗi hoặc thành công -->
         <c:if test="${not empty alert}">
             <div class="alert">${alert}</div>
         </c:if>
-        <form action="${pageContext.request.contextPath}/login" method="post">
+        <form action="${pageContext.request.contextPath}/forgotpassword" method="post">
             <div class="form-group">
                 <label for="uname">Tài khoản:</label>
-                <input type="text" id="uname" name="uname" placeholder="Nhập tài khoản">
+                <input type="text" id="uname" name="uname" placeholder="Nhập tài khoản" required>
             </div>
             <div class="form-group">
-                <label for="psw">Mật khẩu:</label>
-                <input type="password" id="psw" name="psw" placeholder="Nhập mật khẩu">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Nhập email" required>
             </div>
             <div class="form-group">
-                <label>
-                    <input type="checkbox" name="remember"> Ghi nhớ đăng nhập
-                </label>
+                <label for="newPassword">Mật khẩu mới:</label>
+                <input type="password" id="newPassword" name="newPassword" placeholder="Nhập mật khẩu mới" required>
             </div>
             <div class="form-actions">
-                <button type="submit">Đăng Nhập</button>
+                <button type="submit">Đặt lại mật khẩu</button>
             </div>
         </form>
-        <div class="links">
-            <a href="${pageContext.request.contextPath}/register">Chưa có tài khoản? Đăng ký ngay</a>
-            |
-            <a href="${pageContext.request.contextPath}/forgotpassword">Quên mật khẩu?</a>
-        </div>
+        <a href="${pageContext.request.contextPath}/login">Quay lại đăng nhập</a>
     </div>
 </body>
 </html>

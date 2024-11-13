@@ -16,10 +16,11 @@ public class DBconnect {
     public Connection getConnection() throws ClassNotFoundException {
     	Connection conn = null;
         try {
+        	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName + ";encrypt=true;trustServerCertificate=true";
 
             conn = DriverManager.getConnection(url,userID,password);
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            
             if (conn != null) {
                 DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
                 System.out.println("Driver name: " + dm.getDriverName());
